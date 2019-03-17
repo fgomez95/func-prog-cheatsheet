@@ -8,21 +8,44 @@
 outside the function are carefully controlled
 */
 
-const preprarePhone = () => ['headphones', 'iphone', 'charger'];
+const preprareiPhone = () => ['headphones', 'iphone', 'charger'];
 
-const  generateOrder = (batches = 1) => {
+let  generateOrder = (batches = 1) => {
     let finalOrder = [];
-    function addOrder(counter){
+    function addItem(counter){
         if(counter == 0) return finalOrder;
-        finalOrder.push(preprarePhone());
-        addOrder(counter - 1);
+        finalOrder.push(preprareiPhone());
+        addItem(counter - 1);
     }
 
-    addOrder(batches);
+    addItem(batches);
 
 
     return finalOrder;
 }
 
-console.log(generateOrder());
+console.log('***first order***\n', generateOrder());
 
+/* First Class Functions: All JavaScript functions,
+ * Higher Order Functions: All functions that accept another function 
+ * Lambda Function: A function that is passed or returned to another function;
+ */
+
+generateOrder = (product, batches = 1) => {
+    let finalOrder = [];   
+
+    function addItem(product, batches){
+        if(!product || batches == 0) return finalOrder;
+        finalOrder.push(product());
+        addItem(product, batches - 1);
+    }
+    addItem(product, batches);
+    return finalOrder;
+ }
+
+const prepareiPadPromo = () => ['iPad Pro', 'charger', 'case']; 
+
+const iphones = generateOrder(preprareiPhone, 3);
+const ipads = generateOrder(prepareiPadPromo, 4)
+
+ console.log('***generate iphones and ipads order***\n', iphones, ipads);
