@@ -49,3 +49,16 @@ const iphones = generateOrder(preprareiPhone, 3);
 const ipads = generateOrder(prepareiPadPromo, 4)
 
  console.log('***generate iphones and ipads order***\n', iphones, ipads);
+
+ // Avoid mutations and side effects
+
+ var fixedValue = 4;
+
+//good
+ function ingrementCount(){ return fixedValue + 1; }
+ console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue);
+
+ /*wrong
+ function ingrementCount() { return fixedValue++; }
+ console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue)
+ */
