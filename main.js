@@ -10,10 +10,10 @@ outside the function are carefully controlled
 
 const preprareiPhone = () => ['headphones', 'iphone', 'charger'];
 
-let  generateOrder = (batches = 1) => {
+let generateOrder = (batches = 1) => {
     let finalOrder = [];
-    function addItem(counter){
-        if(counter == 0) return finalOrder;
+    function addItem(counter) {
+        if (counter == 0) return finalOrder;
         finalOrder.push(preprareiPhone());
         addItem(counter - 1);
     }
@@ -32,33 +32,38 @@ console.log('***first order***\n', generateOrder());
  */
 
 generateOrder = (product, batches = 1) => {
-    let finalOrder = [];   
+    let finalOrder = [];
 
-    function addItem(product, batches){
-        if(!product || batches == 0) return finalOrder;
+    function addItem(product, batches) {
+        if (!product || batches == 0) return finalOrder;
         finalOrder.push(product());
         addItem(product, batches - 1);
     }
     addItem(product, batches);
     return finalOrder;
- }
+}
 
-const prepareiPadPromo = () => ['iPad Pro', 'charger', 'case']; 
+const prepareiPadPromo = () => ['iPad Pro', 'charger', 'case'];
 
 const iphones = generateOrder(preprareiPhone, 3);
-const ipads = generateOrder(prepareiPadPromo, 4)
+const ipads = generateOrder(prepareiPadPromo, 4);
 
- console.log('***generate iphones and ipads order***\n', iphones, ipads);
+console.log('***generate iphones and ipads order***\n', iphones, ipads);
 
- // Avoid mutations and side effects
+// Avoid mutations and side effects
 
- var fixedValue = 4;
+var fixedValue = 4;
 
 //good
- function ingrementCount(){ return fixedValue + 1; }
- console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue);
+function ingrementCount() { return fixedValue + 1; }
+console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue);
 
- /*wrong
- function ingrementCount() { return fixedValue++; }
- console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue)
- */
+/*wrong
+function ingrementCount() { return fixedValue++; }
+console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue)
+*/
+
+ // Avoid external dependence in a function 
+function decrementCount(val) { return val - 1; }
+console.log('external dependence: ', decrementCount(fixedValue));
+console.log('fixed value: ', fixedValue);
