@@ -17,12 +17,9 @@ let generateOrder = (batches = 1) => {
         finalOrder.push(preprareiPhone());
         addItem(counter - 1);
     }
-
     addItem(batches);
-
-
     return finalOrder;
-}
+};
 
 console.log('***first order***\n', generateOrder());
 
@@ -33,7 +30,6 @@ console.log('***first order***\n', generateOrder());
 
 generateOrder = (product, batches = 1) => {
     let finalOrder = [];
-
     function addItem(product, batches) {
         if (!product || batches == 0) return finalOrder;
         finalOrder.push(product());
@@ -41,7 +37,7 @@ generateOrder = (product, batches = 1) => {
     }
     addItem(product, batches);
     return finalOrder;
-}
+};
 
 const prepareiPadPromo = () => ['iPad Pro', 'charger', 'case'];
 
@@ -55,7 +51,7 @@ console.log('***generate iphones and ipads order***\n', iphones, ipads);
 var fixedValue = 4;
 
 //good
-function ingrementCount() { return fixedValue + 1; }
+function ingrementCount() { return fixedValue + 1; };
 console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue);
 
 /*wrong
@@ -63,15 +59,15 @@ function ingrementCount() { return fixedValue++; }
 console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue)
 */
 
- // Avoid external dependence in a function 
-function decrementCount(val) { return val - 1; }
+// Avoid external dependence in a function 
+function decrementCount(val) { return val - 1; };
 console.log('external dependence: ', decrementCount(fixedValue));
 console.log('fixed value: ', fixedValue);
 
 // Use map to access and extract data
 const getMovieList = () => {
     return [
-        {  
+        {
             "Title": "Inception",
             "Year": "2010",
             "Rated": "PG-13",
@@ -81,7 +77,7 @@ const getMovieList = () => {
             "Type": "movie",
             "Response": "True"
         },
-        {  
+        {
             "Title": "Interstellar",
             "Year": "2014",
             "Rated": "PG-13",
@@ -92,7 +88,7 @@ const getMovieList = () => {
             "Response": "True"
         }
     ];
-}
+};
 
 const newMovieArray = getMovieList().map(el => {
     return {
@@ -103,3 +99,17 @@ const newMovieArray = getMovieList().map(el => {
 
 console.log(newMovieArray);
 
+// understanding built-in map
+let myArr = [10, 20, 30];
+
+Array.prototype.myMap = function (callback) {
+    let newArr = [];
+    this.forEach(el => newArr.push(callback(el)));
+    return newArr;
+};
+
+const arrEx = myArr.myMap(function(el){
+    return el * 10;
+});
+
+console.log(arrEx);
