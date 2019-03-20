@@ -67,3 +67,39 @@ console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue)
 function decrementCount(val) { return val - 1; }
 console.log('external dependence: ', decrementCount(fixedValue));
 console.log('fixed value: ', fixedValue);
+
+// Use map to access and extract data
+const getMovieList = () => {
+    return [
+        {  
+            "Title": "Inception",
+            "Year": "2010",
+            "Rated": "PG-13",
+            "imdbRating": "8.8",
+            "imdbVotes": "1,446,708",
+            "imdbID": "tt1375666",
+            "Type": "movie",
+            "Response": "True"
+        },
+        {  
+            "Title": "Interstellar",
+            "Year": "2014",
+            "Rated": "PG-13",
+            "imdbRating": "8.6",
+            "imdbVotes": "910,366",
+            "imdbID": "tt0816692",
+            "Type": "movie",
+            "Response": "True"
+        }
+    ];
+}
+
+const newMovieArray = getMovieList().map(el => {
+    return {
+        title: el.Title,
+        rating: el.imdbRating
+    };
+});
+
+console.log(newMovieArray);
+
