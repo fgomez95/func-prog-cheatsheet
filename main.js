@@ -1,3 +1,5 @@
+var moviesModule = require("./seeds.js");
+
 /*
 1) Isolated functions - there is no dependence on the state of the program, which includes global
  variables that are subject to change
@@ -7,6 +9,9 @@
 3) Functions with limited side effects - any changes, or mutations, to the state of the program 
 outside the function are carefully controlled
 */
+
+
+
 
 const preprareiPhone = () => ['headphones', 'iphone', 'charger'];
 
@@ -54,9 +59,10 @@ var fixedValue = 4;
 function ingrementCount() { return fixedValue + 1; };
 console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue);
 
-/*wrong
+/*
+this function might throw unexpected output
 function ingrementCount() { return fixedValue++; }
-console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue)
+console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue);
 */
 
 // Avoid external dependence in a function 
@@ -113,3 +119,12 @@ const arrEx = myArr.myMap(function(el){
 });
 
 console.log(arrEx);
+
+// Filter the data with map and transform it with filter
+
+var filteredList = moviesModule.getMovieWatchList()
+.filter(el => ( el["imdbRating"] >= 8))
+.map(el => ({ title: el["Title"], rating: el["imdbRating"] }));
+
+
+console.log(filteredList);
