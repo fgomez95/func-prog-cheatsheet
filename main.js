@@ -128,3 +128,16 @@ var filteredList = moviesModule.getMovieWatchList()
 
 
 console.log(filteredList);
+
+// Implement own version of filter 
+
+const arr = [1,2,3,4,5,6];
+
+Array.prototype.customFilter = function(callback){
+    let newArr = [];
+    this.forEach(el => { if(callback(el)) newArr.push(el); });
+    return newArr;
+};
+
+console.log(arr.customFilter((el) => el > 3));
+
