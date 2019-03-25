@@ -1,3 +1,5 @@
+var moviesModule = require("./seeds.js");
+
 /*
 1) Isolated functions - there is no dependence on the state of the program, which includes global
  variables that are subject to change
@@ -7,6 +9,9 @@
 3) Functions with limited side effects - any changes, or mutations, to the state of the program 
 outside the function are carefully controlled
 */
+
+
+
 
 const preprareiPhone = () => ['headphones', 'iphone', 'charger'];
 
@@ -54,9 +59,10 @@ var fixedValue = 4;
 function ingrementCount() { return fixedValue + 1; };
 console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue);
 
-/*wrong
+/*
+this function might throw unexpected output
 function ingrementCount() { return fixedValue++; }
-console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue)
+console.log('result: ', ingrementCount(), 'fixed value: ', fixedValue);
 */
 
 // Avoid external dependence in a function 
@@ -113,3 +119,35 @@ const arrEx = myArr.myMap(function(el){
 });
 
 console.log(arrEx);
+
+// Filter the data with map and transform it with filter
+
+var filteredList = moviesModule.getMovieWatchList()
+.filter(el => ( el["imdbRating"] >= 8))
+.map(el => ({ title: el["Title"], rating: el["imdbRating"] }));
+
+
+console.log(filteredList);
+
+// Implement own version of filter 
+
+const arr = [1,2,3,4,5,6];
+
+Array.prototype.customFilter = function(callback){
+    let newArr = [];
+    this.forEach(el => { if(callback(el)) newArr.push(el); });
+    return newArr;
+};
+
+console.log(arr.customFilter((el) => el > 3));
+
+// Get portion of an array's items using Slice
+
+const myVehicleArray = ['Car', 'Bike', 'Truck', 'Bus'];
+
+function sliceVehicles(arr, start, end){
+    const myNewVehicleArray = arr.slice(start, end);
+    return myNewVehicleArray;
+};
+
+console.log(sliceVehicles(myVehicleArray, 2, 3));
