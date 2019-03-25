@@ -141,3 +141,13 @@ Array.prototype.customFilter = function(callback){
 
 console.log(arr.customFilter((el) => el > 3));
 
+// Get portion of an array's items using Slice
+
+const myVehicleArray = ['Car', 'Bike', 'Truck', 'Bus'];
+
+function sliceVehicles(arr, start, end){
+    const myNewVehicleArray = arr.slice(start, end);
+    return myNewVehicleArray;
+};
+
+console.log(sliceVehicles(myVehicleArray, 2, 3));
