@@ -151,3 +151,23 @@ function sliceVehicles(arr, start, end){
 };
 
 console.log(sliceVehicles(myVehicleArray, 2, 3));
+
+// Analyze data with reduce
+
+function getAverageRating(arr, director){
+    const rateFilter = arr.filter(el => el.Director === director)
+        .map(el => el.imdbRating);
+    return rateFilter
+        .reduce((reducer, el) => Number(reducer) + Number(el)) / rateFilter.length; 
+};
+
+console.log(getAverageRating(moviesModule.getMovieWatchList(), 'Christopher Nolan'));
+
+// Arrange the data using Sort
+
+function alphabeticalOrder(arr){
+    return arr.sort((a, b) => a.localeCompare(b));
+};
+
+console.log(alphabeticalOrder(['a', 'b', 'r', 'g', 'z']));
+
