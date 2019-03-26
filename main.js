@@ -163,5 +163,11 @@ function getAverageRating(arr, director){
 
 console.log(getAverageRating(moviesModule.getMovieWatchList(), 'Christopher Nolan'));
 
+// Arrange the data using Sort
 
+function alphabeticalOrder(arr){
+    return arr.sort((a, b) => a.localeCompare(b));
+};
+
+console.log(alphabeticalOrder(['a', 'b', 'r', 'g', 'z']));
 
