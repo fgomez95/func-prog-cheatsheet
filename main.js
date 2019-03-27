@@ -171,3 +171,11 @@ function alphabeticalOrder(arr){
 
 console.log(alphabeticalOrder(['a', 'b', 'r', 'g', 'z']));
 
+// Sort elements in a immutable fashion
+
+function nonMutatingSort(arr){
+    return Object.assign([], arr).sort();
+};
+
+const myOriginalArr = [5, 7, 6, 8, 7, 8];
+console.log(myOriginalArr, nonMutatingSort(myOriginalArr));
