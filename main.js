@@ -186,3 +186,9 @@ const myNewString =  'Hello, World';
 
 function splitifyString(str){ return str.split(/\W/); };
 console.log(splitifyString(myNewString));
+
+// Combine array into a string using Join
+
+function myJoin(str){ return str.split(/\W/).join(' ');  };
+
+console.log(myJoin('Hello,-World.'));
