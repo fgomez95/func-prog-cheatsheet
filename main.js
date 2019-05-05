@@ -194,3 +194,16 @@ function urlSlug(title) {
 
 console.log(urlSlug(bookTitle));
 console.log(urlSlug(anotherBook));
+
+// Use every to check if all elements meet function criteria
+const posNumbers = [1, 2, 3, 4];
+const negNumbers = [-1, -3, -4];
+const mixNumbers = [1, -2, 3, 8, 7, -9];
+
+function allPositives(arr){
+    return arr.every(el => el >= 0);
+}
+
+console.log(allPositives(posNumbers));
+console.log(allPositives(negNumbers));
+console.log(allPositives(mixNumbers));
