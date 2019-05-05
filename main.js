@@ -52,7 +52,6 @@ const ipads = generateOrder(prepareiPadPromo, 4);
 console.log('***generate iphones and ipads order***\n', iphones, ipads);
 
 // Avoid mutations and side effects
-
 var fixedValue = 4;
 
 //good
@@ -121,7 +120,6 @@ const arrEx = myArr.myMap(function(el){
 console.log(arrEx);
 
 // Filter the data with map and transform it with filter
-
 var filteredList = moviesModule.getMovieWatchList()
 .filter(el => ( el["imdbRating"] >= 8))
 .map(el => ({ title: el["Title"], rating: el["imdbRating"] }));
@@ -130,7 +128,6 @@ var filteredList = moviesModule.getMovieWatchList()
 console.log(filteredList);
 
 // Implement own version of filter 
-
 const arr = [1,2,3,4,5,6];
 
 Array.prototype.customFilter = function(callback){
@@ -142,7 +139,6 @@ Array.prototype.customFilter = function(callback){
 console.log(arr.customFilter((el) => el > 3));
 
 // Get portion of an array's items using Slice
-
 const myVehicleArray = ['Car', 'Bike', 'Truck', 'Bus'];
 
 function sliceVehicles(arr, start, end){
@@ -153,7 +149,6 @@ function sliceVehicles(arr, start, end){
 console.log(sliceVehicles(myVehicleArray, 2, 3));
 
 // Analyze data with reduce
-
 function getAverageRating(arr, director){
     const rateFilter = arr.filter(el => el.Director === director)
         .map(el => el.imdbRating);
@@ -164,7 +159,6 @@ function getAverageRating(arr, director){
 console.log(getAverageRating(moviesModule.getMovieWatchList(), 'Christopher Nolan'));
 
 // Arrange the data using Sort
-
 function alphabeticalOrder(arr){
     return arr.sort((a, b) => a.localeCompare(b));
 };
@@ -172,7 +166,6 @@ function alphabeticalOrder(arr){
 console.log(alphabeticalOrder(['a', 'b', 'r', 'g', 'z']));
 
 // Sort elements in a immutable fashion
-
 function nonMutatingSort(arr){
     return Object.assign([], arr).sort();
 };
@@ -181,14 +174,23 @@ const myOriginalArr = [5, 7, 6, 8, 7, 8];
 console.log(myOriginalArr, nonMutatingSort(myOriginalArr));
 
 // Split a string by matching a rule using Regex
-
 const myNewString =  'Hello, World';
 
 function splitifyString(str){ return str.split(/\W/); };
 console.log(splitifyString(myNewString));
 
 // Combine array into a string using Join
-
 function myJoin(str){ return str.split(/\W/).join(' ');  };
-
 console.log(myJoin('Hello,-World.'));
+
+// Convert string to URL slug without replace
+const bookTitle = "Les Fleurs Du Mal";
+const anotherBook = "   The winter is comming   ";
+
+function urlSlug(title) {
+    return title.toLowerCase().split(" ")
+        .filter(el => el !== "").join("-");
+}
+
+console.log(urlSlug(bookTitle));
+console.log(urlSlug(anotherBook));
