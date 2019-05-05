@@ -207,3 +207,12 @@ function allPositives(arr){
 console.log(allPositives(posNumbers));
 console.log(allPositives(negNumbers));
 console.log(allPositives(mixNumbers));
+
+// use Some to find at least one match
+
+function verifyNegative(arr){
+    return arr.some(el => el < 0);
+};
+
+console.log(verifyNegative(posNumbers));
+console.log(verifyNegative(mixNumbers));
