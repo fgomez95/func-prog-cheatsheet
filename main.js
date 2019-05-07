@@ -216,3 +216,28 @@ function verifyNegative(arr){
 
 console.log(verifyNegative(posNumbers));
 console.log(verifyNegative(mixNumbers));
+
+// Currying 
+
+function add(x){
+    return function(y){
+        return function(z){
+            return x + y + z;
+        };
+    };
+};
+
+let myAdd = add(10);
+myAdd = myAdd(20);
+myAdd = myAdd(30);
+
+console.log(myAdd);
+
+// Impartial function
+
+function impartial(x, y, z){
+    return x + y + z;
+};
+
+const partial = impartial.bind(this, 5, 6);
+console.log(partial(10));
